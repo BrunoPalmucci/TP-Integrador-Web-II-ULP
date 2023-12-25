@@ -1,17 +1,28 @@
-.carousel-inner {
-    height: 0;
-    padding-bottom: 50%; /* this sets carousel aspect ratio (4:1 here) */
-  }
-  
-  .carousel-item {
-    position: absolute !important; /* Bootstrap is insistent */
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
-  
-  .carousel-item img {
-    height: 100%; /* Bootstrap handles width already */
-    object-fit: contain; /* or 'contain' if you want stretch instead of crop */
-  }
+
+
+.main_cnt{
+    
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    width: 500px;
+    height: 800px;
+    background-color: #3498db; 
+    border: 2px solid  #277ab2; 
+    border-radius: 15px; 
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2); 
+    padding: 20px; 
+    color: white; 
+    text-align: center; 
+    line-height: 1.5;  
+}
+ 
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
+}
+
