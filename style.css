@@ -1,28 +1,145 @@
+body{
+    margin: 0;
 
+    background-color: #313338;
+}
 
-.main_cnt{
+.hidden{
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s; 
     
-    animation: fadeInAnimation ease 3s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
+}
+
+.small{
+    
+    width: 250px;
+    height: 400px;
+    background-color: #F6F6F6; 
+    border: 2px solid  #277ab2; 
+    border-radius: 15px; 
+    margin: 50px;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2); 
+    padding: 20px; 
+    color: black; 
+    text-align: center; 
+    line-height: 1.5; 
+}
+
+.show{
+    opacity: 1;
+   
+    filter: blur(0);
+    transform: translateX(0);
+}
+
+.center{
     width: 500px;
     height: 800px;
-    background-color: #3498db; 
+    background-color: #F6F6F6; 
     border: 2px solid  #277ab2; 
     border-radius: 15px; 
     box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2); 
     padding: 20px; 
+    margin: auto;
     color: white; 
     text-align: center; 
-    line-height: 1.5;  
-}
- 
-@keyframes fadeInAnimation {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-     }
+    line-height: 1.5; 
 }
 
+section{
+    display: grid;
+    place-items: center;
+    align-content: center;
+    min-height: 100vh;
+}
+
+
+
+.center p{
+    color: black;
+}
+
+@media(prefers-reduced-motion){
+    .hidden{
+        transition: none
+    }
+}
+
+.wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.wave svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 242px;
+}
+
+.wave {
+    fill: #000299;
+}
+
+.tilt {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.tilt svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 367px;
+}
+
+.tilt .shape-fill {
+    fill: #F14200;
+}
+
+section{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 400px;
+    padding: 100px 20vw;
+}
+
+.blue{
+    background-color: #000299;
+    height: 1000px;
+}
+
+.red{
+    background-color: #F14200;
+}
+
+.spread{
+    display: flex;
+}
+
+.small:nth-child(2) {
+    transition-delay: 400ms;
+}
+
+.small:nth-child(3) {
+    transition-delay: 600ms;
+}
+
+.small:nth-child(4) {
+    transition-delay: 800ms;
+}
+
+
+ 
