@@ -1,15 +1,14 @@
 body{
     margin: 0;
 
-    background-color: #313338;
+    background-color: #001220;
 }
 
 .hidden{
     opacity: 0;
     filter: blur(5px);
     transform: translateX(-100%);
-    transition: all 1s; 
-    
+    transition-duration: 0.01s;
 }
 
 .small{
@@ -29,7 +28,7 @@ body{
 
 .show{
     opacity: 1;
-   
+    transition: all 0.5s; 
     filter: blur(0);
     transform: translateX(0);
 }
@@ -47,15 +46,6 @@ body{
     text-align: center; 
     line-height: 1.5; 
 }
-
-section{
-    display: grid;
-    place-items: center;
-    align-content: center;
-    min-height: 100vh;
-}
-
-
 
 .center p{
     color: black;
@@ -84,7 +74,7 @@ section{
 }
 
 .wave {
-    fill: #000299;
+    fill: #FA7268
 }
 
 .tilt {
@@ -116,29 +106,43 @@ section{
     padding: 100px 20vw;
 }
 
-.blue{
-    background-color: #000299;
-    height: 1000px;
+.black{
+    background-color: #001220;
 }
 
 .red{
-    background-color: #F14200;
+    background-color: #C62368;
 }
 
 .spread{
     display: flex;
+    margin-top: 300px;
 }
 
-.small:nth-child(2) {
+.small.show:nth-child(2) {
+    transition-delay: 200ms;
+}
+
+.small.show:nth-child(3) {
     transition-delay: 400ms;
 }
 
-.small:nth-child(3) {
+.small.show:nth-child(4) {
     transition-delay: 600ms;
 }
 
-.small:nth-child(4) {
-    transition-delay: 800ms;
+
+
+.spacer{
+    aspect-ratio: 960/300;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.layer1{
+    background-image: url("resources/images/miscelanous/layer1.svg");
 }
 
 
