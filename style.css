@@ -1,149 +1,160 @@
-body{
-    margin: 0;
-
-    background-color: #001220;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #001220;
+  background-size: cover;
 }
 
-.hidden{
-    opacity: 0;
-    filter: blur(5px);
-    transform: translateX(-100%);
-    transition-duration: 0.01s;
+.hidden {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition-duration: 0.01s;
 }
 
-.small{
-    
-    width: 250px;
-    height: 400px;
-    background-color: #F6F6F6; 
-    border: 2px solid  #277ab2; 
-    border-radius: 15px; 
-    margin: 50px;
-    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2); 
-    padding: 20px; 
-    color: black; 
-    text-align: center; 
-    line-height: 1.5; 
+.small {
+  width: 250px;
+  height: 400px;
+  background-color: #f6f6f6;
+  border: 2px solid #277ab2;
+  border-radius: 15px;
+  margin: 50px;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  color: black;
+  text-align: center;
+  line-height: 1.5;
 }
 
-.show{
-    opacity: 1;
-    transition: all 0.5s; 
-    filter: blur(0);
-    transform: translateX(0);
+.show {
+  opacity: 1;
+  transition: all 0.5s;
+  filter: blur(0);
+  transform: translateX(0);
 }
 
-.center{
-    width: 500px;
-    height: 800px;
-    background-color: #F6F6F6; 
-    border: 2px solid  #277ab2; 
-    border-radius: 15px; 
-    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2); 
-    padding: 20px; 
-    margin: auto;
-    color: white; 
-    text-align: center; 
-    line-height: 1.5; 
+.center {
+  width: 500px;
+  height: 800px;
+  background-color: #f6f6f6;
+  border: 2px solid #277ab2;
+  border-radius: 15px;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin: auto;
+  color: white;
+  text-align: center;
+  line-height: 1.5;
 }
 
-.center p{
-    color: black;
+.center p {
+  color: black;
 }
 
-@media(prefers-reduced-motion){
-    .hidden{
-        transition: none
-    }
+@media (prefers-reduced-motion) {
+  .hidden {
+    transition: none;
+  }
 }
 
 .wave {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
 }
 
 .wave svg {
-    position: relative;
-    display: block;
-    width: calc(100% + 1.3px);
-    height: 242px;
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 242px;
 }
 
 .wave {
-    fill: #FA7268
+  fill: #fa7268;
 }
 
 .tilt {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
 }
 
 .tilt svg {
-    position: relative;
-    display: block;
-    width: calc(100% + 1.3px);
-    height: 367px;
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 367px;
 }
 
 .tilt .shape-fill {
-    fill: #F14200;
+  fill: #f14200;
 }
 
-section{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 400px;
-    padding: 100px 20vw;
+section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 400px;
+  padding: 100px 20vw;
 }
 
-.black{
-    background-color: #001220;
+.black {
+  background-color: #001220;
 }
 
-.red{
-    background-color: #C62368;
+.red {
+  background-color: #c62368;
 }
 
-.spread{
-    display: flex;
-    margin-top: 300px;
+.spread {
+  display: flex;
+  margin-top: 300px;
 }
 
 .small.show:nth-child(2) {
-    transition-delay: 200ms;
+  transition-delay: 200ms;
 }
 
 .small.show:nth-child(3) {
-    transition-delay: 400ms;
+  transition-delay: 400ms;
 }
 
 .small.show:nth-child(4) {
-    transition-delay: 600ms;
+  transition-delay: 600ms;
+}
+
+.spacer {
+  aspect-ratio: 960/300;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.layer1 {
+  background-image: url("resources/images/miscelanous/layer1.svg");
+  background-size: cover;
+}
+.container-fluid{
+  padding: 0;
 }
 
 
-
-.spacer{
-    aspect-ratio: 960/300;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+.card{
+  height: 500px;
+  width: 300px;
 }
 
-.layer1{
-    background-image: url("resources/images/miscelanous/layer1.svg");
+img {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
 }
-
-
- 
