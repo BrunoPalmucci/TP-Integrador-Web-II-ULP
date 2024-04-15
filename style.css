@@ -12,43 +12,11 @@ body {
   transition-duration: 0.01s;
 }
 
-.small {
-  width: 250px;
-  height: 400px;
-  background-color: #f6f6f6;
-  border: 2px solid #277ab2;
-  border-radius: 15px;
-  margin: 50px;
-  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  color: black;
-  text-align: center;
-  line-height: 1.5;
-}
-
 .show {
   opacity: 1;
   transition: all 0.5s;
   filter: blur(0);
   transform: translateX(0);
-}
-
-.center {
-  width: 500px;
-  height: 800px;
-  background-color: #f6f6f6;
-  border: 2px solid #277ab2;
-  border-radius: 15px;
-  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  margin: auto;
-  color: white;
-  text-align: center;
-  line-height: 1.5;
-}
-
-.center p {
-  color: black;
 }
 
 @media (prefers-reduced-motion) {
@@ -77,26 +45,6 @@ body {
   fill: #fa7268;
 }
 
-.tilt {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-}
-
-.tilt svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-  height: 367px;
-}
-
-.tilt .shape-fill {
-  fill: #f14200;
-}
-
 section {
   position: relative;
   display: flex;
@@ -114,23 +62,6 @@ section {
   background-color: #c62368;
 }
 
-.spread {
-  display: flex;
-  margin-top: 300px;
-}
-
-.small.show:nth-child(2) {
-  transition-delay: 200ms;
-}
-
-.small.show:nth-child(3) {
-  transition-delay: 400ms;
-}
-
-.small.show:nth-child(4) {
-  transition-delay: 600ms;
-}
-
 .spacer {
   aspect-ratio: 960/300;
   width: 100%;
@@ -143,18 +74,28 @@ section {
   background-image: url("resources/images/miscelanous/layer1.svg");
   background-size: cover;
 }
-.container-fluid{
-  padding: 0;
+.container-fluid {
 }
 
-
-.card{
-  height: 500px;
+.card {
+  padding-top: 50px;
+  margin-left: 50px;
+  height: 600px;
   width: 300px;
+  align-items: center;
+  margin-top: 30px;
+  border-color: grey;
+  border-width: 10px;
+  border-radius: 100px;
 }
 
 img {
   width: 200px;
   height: 300px;
-  object-fit: cover;
+  object-fit: contain;
+}
+
+.card:hover .imagen {
+  transform: scale(1.1);
+  transition: 0.1s;
 }
