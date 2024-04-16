@@ -16,19 +16,19 @@ async function crearDivProducto() {
 
     let row = document.createElement("div");
     row.classList.add("row");
-
     productos.forEach((producto) => {
+      
       let productoNuevo = document.createElement("div");
       productoNuevo.classList.add("col-md-3");
       productoNuevo.innerHTML = `
         <div class="card">
           <img src="${producto.image}" alt="${producto.title}" class="imagen" />
           <div class="card-body">
-            <p>${producto.title}</p>
-            <p>${truncarTexto(producto.description, 30)}</p>
-            <p>${producto.price}</p>
+            <p class = "overflow">${producto.title}</p>
+            <p class = "overflow">${producto.description}</p>
+            <p class = "bottom">${producto.price}$</p>
           </div>
-          <button type="button" class="btn btn-warning">Comprar</button>
+          <button type="button" class="btn btn-warning bottom">Comprar</button>
         </div>`;
 
       row.appendChild(productoNuevo);
@@ -40,11 +40,11 @@ async function crearDivProducto() {
   }
 }
 
-function truncarTexto(texto, largoMax) {
+function truncarTexto(texto, largoMax, minimo) {
   if (texto.length > largoMax) {
-    return texto.substring(0, largoMax) + "...";
+    return texto.substring(minimo, largoMax);
   }
-  return text;
+  return texto;
 }
 
 crearDivProducto();
