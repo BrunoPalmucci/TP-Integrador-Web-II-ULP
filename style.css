@@ -96,7 +96,7 @@ img {
 
 .card:hover .imagen {
   transform: scale(1.1);
-  transition: 0.1s;
+  transition: 0.5s;
 }
 
 .overflow {
@@ -118,5 +118,5 @@ img {
 }
 
 .card:hover{
-  height: 1000px;
+  height: 1300px;
 }
