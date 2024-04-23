@@ -18,7 +18,7 @@ app.get("/productos", async (req, res) => {
 
       producto.title = tituloTraducido.translation;
       producto.description = descripcionTraducido.translation;
-      //HACER EL DESCUENTO ACA. AGREGAR CAMPOS!!
+
       let idP = producto.id;
       let tieneId = descuentos.descuentos.some(
         (item) => item.idProducto === idP
@@ -26,8 +26,9 @@ app.get("/productos", async (req, res) => {
 
       if (tieneId) {
         for (let i = 0; i < descuentos.descuentos.length; i++) {
-          producto["descuento"] = descuentos.descuentos[i].descuento;
-          console.log(producto);
+          if (idP == descuentos.descuentos[i].idProducto) {
+            producto["descuento"] = descuentos.descuentos[i].descuento;
+          }
         }
       }
       return producto;
@@ -72,25 +73,6 @@ async function traducir(texto) {
     );
   });
 }
-/*async function descontar(id) {
-  let productos = await fetchProductos()
-  let descuentoAplicable = 0;
-  let precioProducto = 0;
-
-  for (let i = 0; i < descuentos.length; i++) {
-    if (descuentos[i].idProducto == id) {
-      descuentoAplicable = descuentos[i].descuento;
-    }
-  }
-  for (let i = 0; i < productos.length; i++) {
-    if (productos[i].id == id) {
-      precioProducto = productos[i].price;
-    }
-  }
-  let descuentoTotal = precioProducto * (descuentoAplicable / 100);
-  let precioFinal = precioProducto - descuentoTotal;
-  return precioFinal;
-}*/
 
 app.listen(3000, () => {
   console.log("Server ejecutando en el port 3000");

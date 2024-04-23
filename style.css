@@ -106,21 +106,39 @@ img {
   max-width: 200px;
 }
 
-.card:hover > .card-body > p{
-  overflow:visible;
+.card:hover > .card-body > p {
+  overflow: visible;
   white-space: normal;
-  text-overflow:none;
+  text-overflow: none;
 }
 
-.bottom{
+.bottom {
   position: absolute;
   bottom: 30px;
 }
 
-.card:hover{
+.card:hover {
   height: 1200px;
 }
 
-.card-body{
-  font-size: small
+.card-body {
+  font-size: small;
+}
+
+.oferta {
+  height: 70px;
+  background-color: red;
+  border-radius: 30px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: large;
+}
+
+.bottom-right {
+  bottom: 30px;
+  float: right;
+}
+
+.precioOferta {
+  text-decoration: line-through;
 }
