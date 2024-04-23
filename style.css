@@ -118,5 +118,9 @@ img {
 }
 
 .card:hover{
-  height: 1300px;
+  height: 1200px;
+}
+
+.card-body{
+  font-size: small
 }

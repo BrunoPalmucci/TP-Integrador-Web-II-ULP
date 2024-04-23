@@ -1,0 +1,20 @@
+{
+    "descuentos": [
+        {
+            "idProducto": 2,
+            "descuento": 20
+        },
+        {
+            "idProducto": 5,
+            "descuento": 50
+        },
+        {
+            "idProducto": 10,
+            "descuento": 30
+        },
+        {
+            "idProducto": 15,
+            "descuento": 5
+        }
+    ]
+}
