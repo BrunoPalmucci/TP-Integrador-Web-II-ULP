@@ -44,6 +44,42 @@ app.get("/productos", async (req, res) => {
   }
 });
 
+app.post("/compra", (req, res) => {
+  const producto = req.body;
+  console.log(producto);
+  let datosExistente = [];
+  try {
+    const datos = fs.readFileSync("./comprasRegistradas.json", "utf8");
+    datosExistente = JSON.parse(datos);
+  } catch (err) {
+    console.error("Error reading comprasRegistradas.json:", err);
+    return res
+      .status(500)
+      .json({ message: "Error al leer comprasRegistradas.json" });
+  }
+
+  datosExistente.push(producto);
+
+  fs.writeFile(
+    "./comprasRegistradas.json",
+    JSON.stringify(datosExistente, null, 2),
+    (err) => {
+      if (err) {
+        console.log("Error writing to comprasRegistradas.json:", err);
+        return res.send({
+          message: "Error al escribir en comprasRegistradas.json",
+        });
+      } else {
+        console.log("Producto escrito en comprasRegistradas.json");
+        return res.json({
+          message:
+            "Producto recibido y escrito en comprasRegistradas.json exitosamente!",
+        });
+      }
+    }
+  );
+});
+
 async function fetchProductos() {
   try {
     var respuesta = await fetch("https://fakestoreapi.com/products");

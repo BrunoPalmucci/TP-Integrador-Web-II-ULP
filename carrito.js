@@ -1,4 +1,4 @@
-function crearDivProducto() {
+async function crearDivProducto() {
   try {
     let container = document.getElementById("container-fluid");
     let row = document.createElement("div");
@@ -26,11 +26,52 @@ function crearDivProducto() {
         <div class="card">
           <img src="${producto.image}" alt="${producto.title}" class="imagen" />
           <div class="card-body">
+            <p class = "hidden-id">${producto.id}</p>
             <p class="overflow">${producto.title}</p>
             <p class="overflow">${producto.description}</p> 
             <p class="bottom">$${producto.price}</p>
           </div>
         </div>`;
+
+          let card = productoNuevo.querySelector(".card");
+          let boton = document.createElement("button");
+          boton.className = "btn btn-warning bottom";
+          boton.textContent = "Comprar";
+          boton.type = "button";
+          boton.addEventListener("click", function () {
+            let card1 = document.querySelector(".hidden-id")
+            let id = card1.innerHTML
+            let productoAEnviar = localStorage.getItem(id)
+            if (productoAEnviar && typeof productoAEnviar !== 'object') {
+                productoAEnviar = JSON.parse(productoAEnviar);
+            }
+            console.log(productoAEnviar)
+            fetch('/compra', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(productoAEnviar)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Producto enviado:', data);
+            })
+            .catch(error => {
+                console.error('Error sending producto:', error);
+            });
+          });
+          card.appendChild(boton);
+
+          let botonEliminar = document.createElement("button");
+          botonEliminar.className = "btn btn-danger top";
+          botonEliminar.textContent = "Eliminar";
+          botonEliminar.type = "button";
+          botonEliminar.addEventListener("click", function () {});
+          card.appendChild(boton);
+          card.appendChild(botonEliminar);
+
+          row.appendChild(productoNuevo);
 
           row.appendChild(productoNuevo);
         } else {
@@ -57,6 +98,37 @@ function crearDivProducto() {
                   )}</p>
                 </div>
               </div>`;
+
+          let card = productoNuevo.querySelector(".card");
+          let boton = document.createElement("button");
+          boton.className = "btn btn-warning bottom";
+          boton.textContent = "Comprar";
+          boton.type = "button";
+          boton.addEventListener("click", function () {
+            fetch('/compra', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(producto)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Producto enviado:', data);
+            })
+            .catch(error => {
+                console.error('Error sending producto:', error);
+            });
+          });
+          card.appendChild(boton);
+
+          let botonEliminar = document.createElement("button");
+          botonEliminar.className = "btn btn-danger top";
+          botonEliminar.textContent = "Eliminar";
+          botonEliminar.type = "button";
+          botonEliminar.addEventListener("click", function () {});
+          card.appendChild(boton);
+          card.appendChild(botonEliminar);
           row.appendChild(productoNuevo);
         }
       }

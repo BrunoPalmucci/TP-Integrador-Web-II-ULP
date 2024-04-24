@@ -143,6 +143,11 @@ img {
   text-decoration: line-through;
 }
 
-.hidden-text{
-  display: none;
+.hidden-id{
+  opacity: 0;
+}
+
+.top{
+  position: absolute;
+  top: 30px;
 }

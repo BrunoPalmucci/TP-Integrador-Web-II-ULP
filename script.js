@@ -28,7 +28,7 @@ async function crearDivProducto() {
       let card = productoNuevo.querySelector(".card");
         let boton = document.createElement("button");
         boton.className = "btn btn-warning bottom";
-        boton.textContent = "Comprar";
+        boton.textContent = "Agregar";
         boton.type = "button";
         boton.addEventListener("click", function () {
           console.log("Funciona el boton");
@@ -63,7 +63,7 @@ async function crearDivProducto() {
         let cardBody = productoNuevo.querySelector(".card");
         let boton = document.createElement("button");
         boton.className = "btn btn-warning bottom";
-        boton.textContent = "Comprar";
+        boton.textContent = "Agregar";
         boton.type = "button";
         boton.addEventListener("click", function () {
           console.log("Funciona el boton");
