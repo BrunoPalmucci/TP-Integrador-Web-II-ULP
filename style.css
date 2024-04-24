@@ -142,3 +142,7 @@ img {
 .precioOferta {
   text-decoration: line-through;
 }
+
+.hidden-text{
+  display: none;
+}
