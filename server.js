@@ -3,9 +3,11 @@ const cors = require("cors");
 const app = express();
 const fs = require("node:fs");
 
+
 var translate = require("node-google-translate-skidz");
 
 app.use(cors());
+app.use(express.json())
 
 const descuentos = require("./descuentos.json");
 
@@ -47,38 +49,43 @@ app.get("/productos", async (req, res) => {
 app.post("/compra", (req, res) => {
   const producto = req.body;
   console.log(producto);
-  let datosExistente = [];
+  let datosExistente = {};
+  
   try {
-    const datos = fs.readFileSync("./comprasRegistradas.json", "utf8");
-    datosExistente = JSON.parse(datos);
+      const datos = fs.readFileSync("./comprasRegistradas.json", "utf8");
+      datosExistente = datos ? JSON.parse(datos) : { comprasRegistradas: [] };
+
+      if (!Array.isArray(datosExistente.comprasRegistradas)) {
+          throw new Error('comprasRegistradas no es un arreglo');
+      }
+
   } catch (err) {
-    console.error("Error reading comprasRegistradas.json:", err);
-    return res
-      .status(500)
-      .json({ message: "Error al leer comprasRegistradas.json" });
+      console.error("Error al leer comprasRegistradas.json:", err);
+      return res.status(500).json({ message: "Error al leer comprasRegistradas.json" });
   }
 
-  datosExistente.push(producto);
+
+  datosExistente.comprasRegistradas.push(producto);
 
   fs.writeFile(
-    "./comprasRegistradas.json",
-    JSON.stringify(datosExistente, null, 2),
-    (err) => {
-      if (err) {
-        console.log("Error writing to comprasRegistradas.json:", err);
-        return res.send({
-          message: "Error al escribir en comprasRegistradas.json",
-        });
-      } else {
-        console.log("Producto escrito en comprasRegistradas.json");
-        return res.json({
-          message:
-            "Producto recibido y escrito en comprasRegistradas.json exitosamente!",
-        });
+      "./comprasRegistradas.json",
+      JSON.stringify(datosExistente, null, 2),
+      (err) => {
+          if (err) {
+              console.log("Error escribiendo a comprasRegistradas.json:", err);
+              return res.send({
+                  message: "Error al escribir en comprasRegistradas.json",
+              });
+          } else {
+              console.log("Producto escrito en comprasRegistradas.json");
+              return res.json({
+                  message: "Producto recibido y escrito en comprasRegistradas.json exitosamente!",
+              });
+          }
       }
-    }
   );
 });
+
 
 async function fetchProductos() {
   try {

@@ -46,20 +46,27 @@ async function crearDivProducto() {
                 productoAEnviar = JSON.parse(productoAEnviar);
             }
             console.log(productoAEnviar)
-            fetch('/compra', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(productoAEnviar)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Producto enviado:', data);
-            })
-            .catch(error => {
-                console.error('Error sending producto:', error);
-            });
+            fetch('http://localhost:3000/compra', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(productoAEnviar)
+          })
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+              return response.json();
+          })
+          .then(data => {
+              console.log('Producto enviado:', data);
+          })
+          .catch(error => {
+              console.error('Error sending producto:', error);
+          });
+          localStorage.removeItem(id)
+            card.remove()
           });
           card.appendChild(boton);
 
@@ -67,7 +74,12 @@ async function crearDivProducto() {
           botonEliminar.className = "btn btn-danger top";
           botonEliminar.textContent = "Eliminar";
           botonEliminar.type = "button";
-          botonEliminar.addEventListener("click", function () {});
+          botonEliminar.addEventListener("click", function () {
+            let card1 = card.querySelector(".hidden-id")
+            let id = card1.innerHTML
+            localStorage.removeItem(id)
+            card.remove()
+          });
           card.appendChild(boton);
           card.appendChild(botonEliminar);
 
@@ -88,6 +100,7 @@ async function crearDivProducto() {
                   <p>En oferta</p>
                   <p>${producto.descuento}%</p>
                 </div>
+                <p class = "hidden-id">${producto.id}</p>
                   <p class="overflow">${producto.title}</p>
                   <p class="overflow">${producto.description}</p> 
                   <p class="bottom precioOferta">$${producto.price}</p>
@@ -105,20 +118,34 @@ async function crearDivProducto() {
           boton.textContent = "Comprar";
           boton.type = "button";
           boton.addEventListener("click", function () {
-            fetch('/compra', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(producto)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Producto enviado:', data);
-            })
-            .catch(error => {
-                console.error('Error sending producto:', error);
-            });
+            let card1 = document.querySelector(".hidden-id")
+            let id = card1.innerHTML
+            let productoAEnviar = localStorage.getItem(id)
+            if (productoAEnviar && typeof productoAEnviar !== 'object') {
+                productoAEnviar = JSON.parse(productoAEnviar);
+            }
+            console.log(productoAEnviar)
+            fetch('http://localhost:3000/compra', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(productoAEnviar)
+          })
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+              return response.json();
+          })
+          .then(data => {
+              console.log('Producto enviado:', data);
+          })
+          .catch(error => {
+              console.error('Error sending producto:', error);
+          });
+          localStorage.removeItem(id)
+            card.remove()
           });
           card.appendChild(boton);
 
@@ -126,7 +153,12 @@ async function crearDivProducto() {
           botonEliminar.className = "btn btn-danger top";
           botonEliminar.textContent = "Eliminar";
           botonEliminar.type = "button";
-          botonEliminar.addEventListener("click", function () {});
+          botonEliminar.addEventListener("click", function () {
+            let card1 = card.querySelector(".hidden-id")
+            let id = card1.innerHTML
+            localStorage.removeItem(id)
+            card.remove()
+          });
           card.appendChild(boton);
           card.appendChild(botonEliminar);
           row.appendChild(productoNuevo);
