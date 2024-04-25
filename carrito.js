@@ -25,6 +25,7 @@ async function crearDivProducto() {
           productoNuevo.innerHTML = `
         <div class="card">
           <img src="${producto.image}" alt="${producto.title}" class="imagen" />
+          <input type="number" name="cantidad">
           <div class="card-body">
             <p class = "hidden-id">${producto.id}</p>
             <p class="overflow">${producto.title}</p>
@@ -95,6 +96,7 @@ async function crearDivProducto() {
                 <img src="${producto.image}" alt="${
             producto.title
           }" class="imagen" />
+          <input type="number" name="cantidad">
                 <div class="card-body">
                 <div class = "oferta">
                   <p>En oferta</p>
